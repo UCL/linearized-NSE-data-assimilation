@@ -1,0 +1,73 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows,spy,shapes,shadows,decorations.pathmorphing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+
+%\pgfplotsset{
+%  tick label style = {font=\huge},
+ % every axis label = {font=\huge},
+ % legend style = {font=\huge},
+ % label style = {font=\huge}
+%}
+
+\begin{document}
+\begin{tikzpicture}[scale = 1] 
+%\begin{semilogyaxis}[ 
+\begin{loglogaxis}[ 
+                    xlabel={$h$}, 
+                    ymax = 4e1,
+                    ymin = 1e-4,
+                    %xmin = 5e-3,
+                    %ylabel={Residual},
+                    %legend pos = outer north east, south east, north west, ... 
+                    legend style={at={(0.01,0.15)},anchor=west},
+                    %legend pos = south west,
+		    label style={at={(axis description cs:0.5,+0.1)},anchor=north},
+                    %title = {  Relative $L^2$ error on $\Omega$},
+ ] 
+\addplot[red,ultra thick,mark=square,forget plot ] 
+  table[x=h,y=vel_B_error] {../data/Navier-Stokes-ill-posed-flow_downstream-order1-theta1.dat};  
+%\addplot[red,ultra thick,mark=none,dashed,forget plot] 
+%  table[x=h,y=p_B_error] {../data/Navier-Stokes-ill-posed-flow_downstream-order1-theta1.dat}; 
+%  \addplot[red,thick,mark=none,solid,forget plot] 
+%  table[x=h,y=jump_res] {../data/Navier-Stokes-ill-posed-flow_downstream-order1-theta1.dat};   
+ \addplot[green!70!black,ultra thick,mark=*,forget plot] 
+  table[x=h,y=vel_B_error] {../data/Navier-Stokes-ill-posed-flow_downstream-order2-theta1.dat};  
+% \addplot[green!70!black,ultra thick,mark=none,dashed,forget plot] 
+%  table[x=h,y=p_B_error] {../data/Navier-Stokes-ill-posed-flow_downstream-order2-theta1.dat};
+%  \addplot[green!70!black,thick,mark=none,solid,forget plot] 
+%  table[x=h,y=jump_res] {../data/Navier-Stokes-ill-posed-flow_downstream-order2-theta1.dat}; 
+ 
+ 
+  \addplot[blue!70!black,ultra thick,mark=triangle*,forget plot] 
+  table[x=h,y=vel_B_error] {../data/Navier-Stokes-ill-posed-flow_downstream-order3-theta1.dat};
+ 
+% \addplot[blue!70!black,ultra thick,mark=none,dashed,forget plot] 
+%  table[x=h,y=p_B_error] {../data/Navier-Stokes-ill-posed-flow_downstream-order3-theta1.dat};\addplot[blue!70!black,thick,mark=none,solid,forget plot] 
+%  table[x=h,y=jump_res] {../data/Navier-Stokes-ill-posed-flow_downstream-order3-theta1.dat}; 
+  
+%  \addplot[blue!70!black,ultra thick,mark=*,dashed,forget plot] 
+%  table[x=h,y=p_B_error] {../data/stokes-ill-posed-convex-Helmholtz-order3.dat};
+ %\addplot[blue,ultra thick,mark options={scale=1.85}, mark=triangle] 
+ % table[x=h,y=p_B_error] {../data/stokes-ill-posed-convex-Stokes-order1.dat}; 
+ %\addplot[blue,ultra thick,mark=triangle*] 
+  %table[x=h,y=p_global_error] {../data/stokes-ill-posed-convex-Stokes-order1.dat}; 
+ \addplot[gray,thin,dashed] 
+  table[x=h,y expr={1.8*\thisrowno{6}}] {../data/Navier-Stokes-ill-posed-flow_downstream-order2-theta1.dat};  
+  \addplot[gray,thick,dotted] 
+  table[x=h,y expr={0.2*\thisrowno{6}*\thisrowno{6}}] {../data/Navier-Stokes-ill-posed-flow_downstream-order2-theta1.dat}; 
+%  \addplot[gray,thick,dashdotted] 
+%  table[x=h,y expr={0.2*\thisrowno{6}*\thisrowno{6}*\thisrowno{6}}] {../data/Navier-Stokes-ill-posed-flow_downstream-order2-theta1.dat}; 
+ %\addplot[gray,thick,dotted] 
+ % table[x=h,y expr={1.8*\thisrowno{6}^0.75}] {../data/stokes-ill-posed-convex-Stokes-order1.dat};  
+%\addplot[gray,thick,dashed] 
+%  table[x=h,y=h] {../data/stokes-ill-posed-convex-Stokes-order1.dat};  
+%\addplot[orange,ultra thick,mark=square] 
+%  table[x=h,y=] {../../../../data/4_learnedIE_individual/spherical_geom/plane_wave_hom/plane-wave-p12.dat} 
+%\legend{$k=1$,$k=2$,$k=3$,$\mathcal{O}(h)$,$\mathcal{O}(h^2)$}
+%\legend{ $\mathcal{O}(h)$,$\mathcal{O}(h^2)$,$\mathcal{O}(h^3)$}
+\end{loglogaxis}
+%\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
+% triangle , square, *
