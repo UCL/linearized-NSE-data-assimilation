@@ -9,8 +9,8 @@ This repository contains the software, data and instructions to reproduce the nu
 
 # How to run / install
 * Please download the docker image from zenodo.
-* Assuming that `linearized-nse-repro.tar` is the filename of the downloaded image, please load the image with `sudo docker load < linearized-nse-repro.tar`.
-* Run the image with `sudo docker run -it linearized-nse-repro:v1 bash `.
+* Assuming that `linearized-nse-repro.tar` is the filename of the downloaded image, please load the image with `docker load < linearized-nse-repro.tar`. Usually this command has to be executed with root privileges, which means e.g. on linux systems that `sudo` has to be added in front of this command.
+* Run the image with `docker run --init -ti -p 8888:8888 linearized-nse-repro:v1`. Open the url shown in the terminal in your browser.
 * Proceed further as described in [How to reproduce](#repro)
 
 # How to reproduce 
